@@ -1,0 +1,72 @@
+<%- include('../includes/studentHead.ejs') %>
+
+  <%- include('../includes/studentNav.ejs') %>
+
+
+    <section class="sectionSpacing border shadow-sm p-5" id="start">
+      <div class="border-lg rounded shadow-sm m-auto p-4 col-md-7 col-lg-8">
+        <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm">
+
+          <!-- <img class="me-3" src="/docs/5.0/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38"> -->
+          <div class="lh-1">
+            <h1 class="h6 mb-0 text-white lh-1">Exam </h1>
+          </div>
+        </div>
+        <h1 class="h6 mb-0 lh-1" id="examName">
+          Exam Name: <%= exam.examName %>
+        </h1>
+        <hr>
+        <h1 class="h6 mb-0 lh-1">
+          Exam Date: <%= exam.examDate %>
+        </h1>
+        <hr>
+        <h1 class="h6 mb-0 lh-1">
+          Exam type: <%= exam.examType %>
+        </h1>
+
+        <input id="examId" type="hidden" name="examId" value="<%= exam._id %>">
+        <div class="my-4 btn btn-primary btn-lg" onclick="startExam(this)" id="start">Start Quiz!</div>
+    </section>
+
+    <!-- ######################################################################################################################### -->
+
+    <section class="sectionSpacing border shadow-sm p-5" style="display: none;" id="quiz">
+
+      <div class="border-lg rounded shadow-sm m-auto p-4 col-md-7 col-lg-8">
+        <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm">
+
+          <!-- <img class="me-3" src="/docs/5.0/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38"> -->
+          <div class="lh-1">
+            <h1 class="h6 mb-0 text-white lh-1">Question</h1>
+            <!-- <small>Since 2011</small> -->
+          </div>
+        </div>
+        <div id="question"></div>
+        <div id="choices">
+          <div class="choice " style="cursor: pointer; margin: 10px;" id="A" onclick="checkAnswer('A')"></div>
+          <div class="choice " style="cursor: pointer; margin: 10px;" id="B" onclick="checkAnswer('B')"></div>
+          <div class="choice " style="cursor: pointer; margin: 10px;" id="C" onclick="checkAnswer('C')"></div>
+          <div class="choice " style="cursor: pointer; margin: 10px;" id="D" onclick="checkAnswer('D')"></div>
+        </div>
+        <div id="timer">
+          <div id="counter"></div>
+          <div id="btimeGauge"></div>
+          <div id="timeGauge"></div>
+        </div>
+        <div id="progress"></div>
+        <div id="scoreContainer" style="display: none"></div>
+        <form class="needs-validation my-4" id="examSubmit" name="examSubmit" novalidate="" action="/student/exam/objective" method="POST"  style="display: none">
+            <input type="hidden" name="marks" value="">
+            <input type="hidden" name="totalMarks" value="<%= questions.length %>">
+            <input type="hidden" name="examId" value="<%= exam._id %>">
+            <input type="hidden" name="courseId" value="<%= exam.course %>">
+            <input type="hidden" name="examName" value="<%= exam.examName %>">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="my-4 w-100 btn btn-primary btn-lg" type="submit">Submit Exam</button>
+        </form>
+      </div>
+
+    </section>
+    <script src="/js/examCheck.js">
+    </script>
+    <%- include('../includes/studentEnd.ejs') %>

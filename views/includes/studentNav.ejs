@@ -1,0 +1,56 @@
+<header class="px-3 py-2 bg-dark text-white  fixed-top">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <h1 class="h5 fW-5 mx-5 text-warning d-flex align-items-center my-2 my-lg-0 me-lg-auto text-decoration-none">
+          ONLINE EXAMINATION SYSTEM </h1>
+        <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+          <li>
+            <!-- <a href="#" class="nav-link text-secondary">
+                  <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#home"></use><i class="fas fa-home"></i></use></svg>
+                  Home
+                </a>
+              </li> -->
+          <li>
+            <a href="/student/dashboard" class="nav-link text-white ">
+              <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                <use xlink:href="#speedometer2"></use><i class="fas fa-columns"></i>
+              </svg>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/student/grades" class="nav-link text-white">
+              <svg class="bi d-block mx-auto mb-1 ms-5" width="24" height="24">
+                <use xlink:href="#table"><i class="fas fa-poll-h"></i></use>
+              </svg>
+              Grades
+            </a>
+          </li>
+          <!-- <li>
+            <a href="/student/profile" class="nav-link text-white me-5">
+              <svg class="bi d-block mx-auto mb-1 ms-5" width="24" height="24">
+                <use xlink:href="#people-circle"></use><i class="fas fa-user-circle"></i>
+              </svg>
+              Profile
+            </a>
+          </li> -->
+          <!-- <li>
+            <a class="btn btn-warning nav-link btn-sm m-2" href="#">
+              <svg class="bi d-block" width="12" height="5">
+                <use xlink:href="#grid"></use><i class="fas fa-sign-out-alt"></i>
+              </svg>
+              SignOut
+            </a>
+          </li> -->
+          <li>
+            <form action="/auth/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
+                <button class="btn btn-warning nav-link btn-sm m-2" id="logout" type="submit">Logout</button>
+            </form>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </header>

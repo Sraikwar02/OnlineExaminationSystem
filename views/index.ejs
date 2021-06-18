@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONLINE EXAMINATION SYSTEM </title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header >
+        <a href="#" class="logo">ONLINE <span>EXAMINATION</span>SYSTEM</a>
+        <div class="menuToggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+            <li><a href="#banner" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+            <li><a href="/auth/login" onclick="toggleMenu()">Login</a></li>
+            <li><a href="/auth/signup" onclick="toggleMenu()">SignUp</a></li>
+        </ul>
+    </header>
+    <section class="banner" id="banner">
+        <div class="content">
+            <h2>ONLINE <span>EXAMINATION</span>SYSTEM</h2>
+            <p>Easy and affordable way for conducting online examination for schools and collages.</p>
+            <a href="/auth/signup" class="btn">GET STARTED</a>
+        </div>
+    </section>
+    <section class="about" id="about">
+        <div class="row">
+            <div class="col50">
+                <h2 class="titleText"><span>A</span>bout Us</h2>
+                <p>Online Examination System is a technology-driven way to simplify examination activities like defining exam patterns with question banks, defining exam timer, objective/ subjective question sections, conducting exams using the computer or mobile devices in a paperless manner. <br> <br>
+                    Online Examination System is a cost-effective, scalable way to convert traditional pen and paper-based exams to online and paperless mode. <br> <br>
+                    Candidates can appear for the exam using any desktop, laptop, or mobile device with a browser. Exam results can be generated instantly for the objective type of questions.
+                    </p>
+            </div>
+            <div class="col50">
+                <div class="imgBx">
+                    <img src="/img1.png" alt="images">
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <section class="contact" id="contact">
+        <div class="title">
+            <h2 class="titleText"><span>C</span>ontact Us</h2>
+        </div>
+        <div class="contactForm">
+            <h3>Write Us on <a href="mailto:">onlineExaminationSystem.com</a></h3>
+            <h3>Call Us : <span>123456789</span> </h3>
+
+            <!-- <div class="inputBox">
+                <input type="text" placeholder="name">
+            </div>
+            <div class="inputBox">
+                <input type="email" placeholder="Email">
+            </div>
+            <div class="inputBox">
+                <textarea name="message" id="" cols="1" rows="5">Message</textarea>
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="Send">
+            </div> -->
+
+        </div>
+    </section>
+    <section class="copyrightText">
+        <p>Copyright 2020.<a href="#">SrGroups.</a>All right reserved.</p>
+    </section>
+
+    <script type="text/javascript">
+    window.addEventListener('scroll',function(){
+        const header= document.querySelector('header');
+        header.classList.toggle("sticky",window.scrollY>0);
+    })
+
+    function toggleMenu(){
+        const menuToggle=document.querySelector('.menuToggle');
+        const navigation=document.querySelector('.navigation');
+        menuToggle.classList.toggle('active');
+        navigation.classList.toggle('active');
+    }
+
+    </script>
+</body>
+</html>

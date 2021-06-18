@@ -1,0 +1,102 @@
+
+
+<%- include('../includes/teacherHead.ejs') %>
+
+<!-- ----------------------------------------- -->
+
+<div class="container-fluid">
+    <div class="row">
+        <%- include('../includes/teacherNav.ejs') %>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+            <!-- <h1 class="h2">Dashboard</h1> -->
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                <div class="col-md-7 col-lg-8 border rounded p-5">
+                    <h4 class="mb-3 border-bottom py-2">Subjective Question Paper Upload</h4>
+                    <form class="needs-validation" method="POST" action="/teacher/objectiveexaminationupload">
+                        <div class="row g-3">
+
+                            <div class="col-12">
+                                <fieldset disabled>
+                                    <div class="mb-3">
+                                      <label for="examinationname" class="form-label">Examination Name</label>
+                                      <input type="text" id="examinationname" class="form-control" placeholder="<%= exam.examName %>">
+                                    </div>
+                                    <div class="mb-3">
+                                      <label for="examinationtype" class="form-label">Examination Type</label>
+                                      <select id="examinationtype" class="form-select">
+                                        <option><%= exam.examType %></option>
+                                      </select>
+                                    </div>
+                                    
+                                  </fieldset>
+                            </div>
+                            
+                            <hr>
+
+                            <div class="col-12">
+                                <label for="question" class="form-label">Question</label>
+                                <input type="text" class="form-control" name="question" id="question" required="">
+                                <div class="invalid-feedback">
+                                    Please enter Question.
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="option1" class="form-label">Option 1.</label>
+                                <input type="text" class="form-control" name="option1" id="option1" required="">
+                                <div class="invalid-feedback">
+                                    Please enter option.
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="option2" class="form-label">Option 2.</label>
+                                <input type="text" class="form-control" name="option2" id="option2" required="">
+                                <div class="invalid-feedback">
+                                    Please enter option.
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="option3" class="form-label">Option 3.</label>
+                                <input type="text" class="form-control" name="option3" id="option3" required="">
+                                <div class="invalid-feedback">
+                                    Please enter option.
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label for="option4" class="form-label">Option 4.</label>
+                                <input type="text" class="form-control" name="option4" id="option4" required="">
+                                <div class="invalid-feedback">
+                                    Please enter option.
+                                </div>
+                            </div>
+                            <div class="col-6 ">
+                                <label for="answer" class="form-label">Answer</label>
+                                <input type="text" class="form-control" name="answer" id="answer" required="">
+                                <div class="invalid-feedback">
+                                    Please enter Answer.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+                        <input type="hidden" name="examId" value="<%= exam._id %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="col-5 btn btn-primary btn-lg mx-0" type="submit">UPLOAD & NEXT</button>
+                        <a href="/teacher/dashboard" class="col-5 btn btn-primary btn-lg mx-0" >DONE</a>
+
+                        
+                    </form>
+                </div>
+
+            </div>
+
+
+        </main>
+    </div>
+</div>
+
+<!-- ----------------------------------------- -->
+
+<%- include('../includes/teacherEnd.ejs') %>

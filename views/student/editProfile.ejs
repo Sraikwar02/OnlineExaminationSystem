@@ -1,0 +1,116 @@
+
+<%- include('../includes/studentHead.ejs') %>
+
+<%- include('../includes/studentNav.ejs') %>
+
+  <!-- ######################################################################################################################### -->
+
+  <section class="sectionSpacing border shadow-sm p-5">
+
+    <div class="border-lg rounded shadow-sm m-auto p-4 col-md-7 col-lg-8">
+      <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm">
+
+        <!-- <img class="me-3" src="/docs/5.0/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38"> -->
+        <div class="lh-1">
+          <h1 class="h6 mb-0 text-white lh-1">Edit Profile</h1>
+          <!-- <small>Since 2011</small> -->
+        </div>
+      </div>
+      <form class="needs-validation my-4" novalidate="" action="/student/editprofile" method="POST">
+        <div class="row g-3">
+          <div class="col-12">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" placeholder="your Full Name" value="" required="">
+            <div class="invalid-feedback">
+              Full name is required.
+            </div>
+          </div>
+
+
+          <div class="col-12">
+            <label for="email" class="form-label">Email </label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+              Please enter a valid email.
+            </div>
+          </div>
+
+          <div class="col-12">
+            <label for="class" class="form-label">Class</label>
+            <div class="input-group has-validation">
+              <!-- <span class="input-group-text">@</span> -->
+              <input type="text" class="form-control" id="class" placeholder="class" required="">
+              <div class="invalid-feedback">
+                Your class is required.
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="col-12">
+            <label for="rollnumber" class="form-label">Roll Number</label>
+            <input type="text" class="form-control" id="rollnumber" placeholder="Roll Number" required="">
+            <div class="invalid-feedback">
+              Please enter your Roll Number.
+            </div>
+          </div>
+          <!--
+          <div class="col-12">
+            <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+          </div>
+
+          <div class="col-md-5">
+            <label for="country" class="form-label">Country</label>
+            <select class="form-select" id="country" required="">
+              <option value="">Choose...</option>
+              <option>United States</option>
+            </select>
+            <div class="invalid-feedback">
+              Please select a valid country.
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label for="state" class="form-label">State</label>
+            <select class="form-select" id="state" required="">
+              <option value="">Choose...</option>
+              <option>California</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid state.
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <label for="zip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="zip" placeholder="" required="">
+            <div class="invalid-feedback">
+              Zip code required.
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-4">
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="same-address">
+          <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="save-info">
+          <label class="form-check-label" for="save-info">Save this information for next time</label>
+        </div>
+        <hr class="my-4"> 
+      -->
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button class="my-4 w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+      </form>
+    </div>
+
+  </section>
+
+
+  <%- include('../includes/studentEnd.ejs') %>

@@ -1,0 +1,74 @@
+
+
+<%- include('../includes/teacherHead.ejs') %>
+
+    <!-- ----------------------------------------- -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <%- include('../includes/teacherNav.ejs') %>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <!-- <h1 class="h2">Dashboard</h1> -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                    <div class="col-md-7 col-lg-8 border rounded p-5">
+                        <h4 class="mb-3 border-bottom py-2">Subjective Question Paper Upload</h4>
+                        <form class="needs-validation" method="POST" action="/teacher/subjectiveexaminationupload" enctype="multipart/form-data">
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <fieldset disabled>
+                                        <div class="mb-3">
+                                          <label for="examinationname" class="form-label">Examination Name</label>
+                                          <input type="text" id="examinationname" class="form-control" placeholder="Examination Name">
+                                        </div>
+                                        <div class="mb-3">
+                                          <label for="examinationtype" class="form-label">Examination Type</label>
+                                          <select id="examinationtype" class="form-select">
+                                            <option>Subjective</option>
+                                          </select>
+                                        </div>
+                                        
+                                      </fieldset>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="instruction" class="form-label">Give Instruction For Students</label>
+                                    <textarea class="form-control" name="instruction" placeholder="Give Instruction for Students."
+                                        id="instruction"></textarea>
+                                    <!-- <input type="text" class="form-control" id="instruction"> -->
+                                    <div class="invalid-feedback">
+                                        Please enter a Instruction for Students.
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="subjectivequestionpaper" class="form-label">Upload Question Paper<span
+                                            class="text-muted">(.pdf/.doc)</span></label>
+                                    <input type="file" class="form-control" name="subjectivequestionpaper" id="subjectivequestionpaper" required="">
+                                    <div class="invalid-feedback">
+                                        Please upload a .pdf  file.
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <hr class="my-4">
+                            <input type="hidden" name="examId" value="<%= exam %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ----------------------------------------- -->
+
+    <%- include('../includes/teacherEnd.ejs') %>

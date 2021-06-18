@@ -1,0 +1,82 @@
+<%- include('../includes/adminHead.ejs') %>
+
+    <!-- ----------------------------------------- -->
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <%- include('../includes/adminNav.ejs') %>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+
+                <div class="d-flex align-items-center col-lg-10 p-3 my-3 text-white bg-primary rounded shadow-sm">
+                    <!-- <img class="me-3" src="/docs/5.0/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38"> -->
+                    <div class="lh-1">
+                        <h1 class="h5 mt-0 pt-0 text-white lh-1">Create Course</h1>
+
+                    </div>
+                </div>
+                <div class="album py-5 bg-light col-lg-10 border rounded p-5">
+                    
+                    <form class="needs-validation" action="/admin/createcourse" method="POST"  novalidate>
+                        <div class="row g-3">
+
+                            <div class="col-12">
+                                <label for="courseName" class="form-label">Course Name</label>
+                                <input type="text" class="form-control" name="courseName" id="courseName">
+                                <div class="invalid-feedback">
+                                    Please enter a valid Examination Name.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <fieldset disabled>
+                                    <div class="mb-3">
+                                        <label for="createrName" class="form-label">Creator Name</label>
+                                        <input type="text" name="creatorName" id="creatorName" class="form-control" placeholder="<%= creatorName.userName %>">
+                                    </div>
+
+                                </fieldset>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="description" class="form-label">Description<span
+                                        class="text-muted">(Optional)</span></label>
+                                <input type="text" class="form-control" name="description" id="description" required="">
+                                <div class="invalid-feedback">
+                                    Please enter Examination Description.
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label for="managedBy" class="form-label">Teacher</label>
+                                <select class="form-select" name="managedBy" id="managedBy" required="">
+                                    <% for(let Teacher of teachers ) {%>
+                                    <option value="<%= Teacher.userName %>"><%= Teacher.userName %></option>
+                                    <% } %>
+                                    
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid option.
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Create Course</button>
+                    </form>
+                
+                </div>
+        
+              </main>
+
+            
+        </div>
+    </div>
+
+    <!-- ----------------------------------------- -->
+
+    <%- include('../includes/adminEnd.ejs') %>

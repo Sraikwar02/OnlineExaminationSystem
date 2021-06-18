@@ -1,0 +1,38 @@
+
+<%- include('../includes/studentHead.ejs') %>
+
+<%- include('../includes/studentNav.ejs') %>
+
+    <section class="sectionSpacing border p-5">
+        <div class="container border" id="containers">
+            <h2 class="mt-4">Grades</h2>
+        </div>
+        <table class="container table table-striped">
+          
+          <% if(exams <= 0) {%>
+            <h6>No. Exam Attended!!!</h6>
+          <% } else {%>
+            <thead class="bg-primary text-light">
+              <tr>
+                <th scope="col">Exam Name</th>
+                <th scope="col">Achieved Marks</th>
+                <th scope="col">Total Marks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let exam of exams )  {%>
+              <tr>
+                <td><%= exam.examName %></td>
+                <td><%= exam.achievedMarks %></td>
+                <td><%= exam.totalMarks %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          <% } %>
+          </table>
+        
+    </section>
+
+    
+
+    <%- include('../includes/studentEnd.ejs') %>

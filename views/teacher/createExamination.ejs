@@ -1,0 +1,115 @@
+<%- include('../includes/teacherHead.ejs') %>
+
+    <!-- ----------------------------------------- -->
+
+    <div class="container-fluid " >
+        <div class="row">
+            <%- include('../includes/teacherNav.ejs') %>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <!-- <h1 class="h2">Dashboard</h1> -->
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                    <div class="col-md-7 col-lg-8 border rounded p-5">
+                        <h4 class="mb-3 border-bottom py-2">Create Exam</h4>
+                        <form class="needs-validation" novalidate="" action="/teacher/createexamination" method="POST">
+                            <div class="row g-3">
+
+                                <div class="col-12">
+                                    <label for="examname" class="form-label">Examination Name</label>
+                                    <input type="text" class="form-control" name="examname" id="examname">
+                                    <div class="invalid-feedback">
+                                        Please enter a valid Examination Name.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="coursename" class="form-label">Course</label>
+                                    <select class="form-select" name="coursename" id="coursename">
+
+                                        <% if(courses < 0) {%>
+                                            <option disabled>No. course available!!!</option>
+                                            <% } else {%>
+                                                <% for(course of courses) {%>
+                                                    <option value="<%= course.courseName %>">
+                                                        <%= course.courseName %>
+                                                    </option>
+                                                    <% }} %>
+
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid option.
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <label for="examinationtype" class="form-label">Examination Type</label>
+                                    <select class="form-select" id="examinationtype" name="examtype" >
+                                        <option disabled value="subjective">Subjective</option>
+                                        <option value="objective">Objective</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid option.
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="data" class="form-label">Date</label>
+                                    <input type="date" class="form-control" name="date" id="date" required="">
+                                    <div class="invalid-feedback">
+                                        Please enter Examination Date.
+                                    </div>
+                                </div>
+<!-- 
+                                <div class="col-6">
+                                    <label for="Statingtime" class="form-label">Stating Time</label>
+                                    <input type="time" class="form-control" name="startingtime" id="startingtime" required="">
+                                    <div class="invalid-feedback">
+                                        Please enter Stating Time.
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="endtime" class="form-label">End Time</label>
+                                    <input type="time" class="form-control" name="endingtime" id="endingtime" required="">
+                                    <div class="invalid-feedback">
+                                        Please enter End Time.
+                                    </div>
+                                </div> -->
+
+                            </div>
+
+                            <hr class="my-4">
+
+                            <!-- <div class="form-check">
+
+                                <input type="checkbox" class="form-check-input" id="same-address">
+                                <label class="form-check-label" for="same-address">Shipping address is the same as my
+                                    billing address</label>
+                            </div>
+
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="save-info">
+                                <label class="form-check-label" for="save-info">Save this information for next
+                                    time</label>
+                            </div>
+
+
+                            <hr class="my-4"> -->
+
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Next</button>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ----------------------------------------- -->
+
+    <%- include('../includes/teacherEnd.ejs') %>

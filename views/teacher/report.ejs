@@ -1,0 +1,74 @@
+<%- include('../includes/teacherHead.ejs') %>
+
+  <!-- ----------------------------------------- -->
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <%- include('../includes/teacherNav.ejs') %>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+
+          <div class="d-flex align-items-center p-3 my-3 text-white bg-primary rounded shadow-sm">
+            <!-- <img class="me-3" src="/docs/5.0/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38"> -->
+            <div class="lh-1">
+              <h1 class="h5 mb-0 text-white lh-1">Course List</h1>
+
+            </div>
+          </div>
+          <% if(courses <= 0) {%>
+            <h6>No. Course available!!!</h6>
+          <% } else {%>
+              <div class="my-3 p-3 bg-body rounded shadow-sm">
+                <% for(let Course of courses)  {%>
+                  <article class="d-flex text-muted pt-3">
+                    <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32"
+                      xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32"
+                      preserveAspectRatio="xMidYMid slice" focusable="false">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff"
+                        dy=".3em">32x32</text>
+                    </svg>
+
+                    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+                      <div class="d-flex justify-content-between">
+                        <strong class="text-gray-dark">
+                          <%= Course.courseName %>
+                        </strong>
+                        <div class="btn-group">
+                            <a href="/teacher/report/<%= Course._id %>" class="btn btn-sm btn-outline-secondary">View</a> 
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </article>
+                  <% } %>
+              </div>
+              <% } %>
+                <!-- ------------------------------------------------PAGINATION---------------------------------------- -->
+
+                <div class="container-fluid">
+                  <!-- 
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav> -->
+                </div>
+        </main>
+    </div>
+  </div>
+
+  <!-- ----------------------------------------- -->
+
+  <%- include('../includes/teacherEnd.ejs') %>
+    <script src="/js/admin.js"></script>

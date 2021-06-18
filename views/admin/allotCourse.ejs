@@ -1,0 +1,100 @@
+<%- include('../includes/adminHead.ejs') %>
+    <!-- ----------------------------------------- -->
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <%- include('../includes/adminNav.ejs') %>
+
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 ">
+
+                    <div class="d-flex align-items-center col-lg-10 p-3 my-3 text-white bg-primary rounded shadow-sm">
+                        <!-- <img class="me-3" src="/docs/5.0/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38"> -->
+                        <div class="lh-1">
+                            <h1 class="h5 mt-0 pt-0 text-white lh-1">Allot Courses</h1>
+
+                        </div>
+                    </div>
+                    <div class="album py-5 bg-light col-lg-10 border rounded p-5">
+
+                        <form class="needs-validation" action="/admin/allotcourse" method="POST" novalidate>
+
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <fieldset disabled>
+                                        <div class="mb-3">
+                                            <label for="studentName" class="form-label">Student Name</label>
+                                            <input type="text" name="studentName" id="studentName" class="form-control"
+                                                placeholder="<%= student.userName %>" value="<%= student.userName %>">
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <fieldset disabled>
+                                        <div class="mb-3">
+                                            <label for="studentEmail" class="form-label">Student Email</label>
+                                            <input type="text" name="studentEmail" id="studentEmail"
+                                                class="form-control" placeholder="<%= student.email %>"
+                                                value="<%= student.email %>">
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div class="col-md-9">
+                                    <label for="courseList" class="form-label">Course List</label>
+                                    <select class="form-select" name="courseName" id="courseName">
+
+                                        <% if(courses <=0) {%>
+                                            <option>No. course available!!!</option>
+                                            <% } else {%>
+                                                <% for(course of courses) {%>
+                                                    <option value="<%= course.courseName %>">
+                                                        <%= course.courseName %>
+                                                    </option>
+                                                    <% }} %>
+
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid option.
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <!-- <label for="addCourse" class="form-label">Add Course</label> -->
+                                    <a class="link-secondary align-middle" href="#" aria-label="Add a new report">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-plus-circle">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="12" y1="8" x2="12" y2="16"></line>
+                                            <line x1="8" y1="12" x2="16" y2="12"></line>
+                                        </svg>
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <hr class="my-4">
+
+                            <input type="hidden" name="studentName" id="studentName" class="form-control"
+                                placeholder="<%= student.userName %>" value="<%= student.userName %>">
+                            <input type="hidden" name="studentEmail" id="studentEmail" class="form-control"
+                                placeholder="<%= student.email %>" value="<%= student.email %>">
+                                
+                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Allot Course</button>
+                        </form>
+
+                    </div>
+
+                </main>
+
+
+        </div>
+    </div>
+
+    <!-- ----------------------------------------- -->
+    <%- include('../includes/adminEnd.ejs') %>
