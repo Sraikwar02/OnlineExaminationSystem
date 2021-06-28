@@ -7,17 +7,17 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 const counter = document.getElementById("counter");
-const timeGauge = document.getElementById("timeGauge");
-const progress = document.getElementById("progress");
-const scoreDiv = document.getElementById("scoreContainer");
 const examSubmit = document.getElementById("examSubmit");
-const examId = document.getElementById("examId");
+const examId = document.querySelector('[name=examId]').value;
 
 let runningQuestion = 0;
 let score = 0;
 let Questions;
 
+console.log(quiz);
+
 const startExam = async (btn) => {
+    console.log("running");
     const examId = btn.parentNode.querySelector('[name=examId]').value;
     try {
         const questions = await fetch('/student/exam/questions/' + examId, {

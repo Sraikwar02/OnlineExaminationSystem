@@ -17,7 +17,7 @@ exports.getSignUp = (req, res, next) => {
     } else {
         message = null;
     }
-    res.render('auth/signInpage', {
+    res.render('./auth/signInpage', {
         pagetitle: 'SignUp',
         errorMessage: message,
         oldInput: {
@@ -38,7 +38,7 @@ exports.postSignIn = (req, res, next) => {
     const radioOptions = req.body.inlineRadioOptions;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).render('auth/signInpage', {
+        return res.status(422).render('./auth/signInpage', {
             pagetitle: 'SignUp',
             errorMessage: errors.array()[0].msg,
             oldInput: {
@@ -86,7 +86,7 @@ exports.getLogIn = (req, res, next) => {
     } else {
         message = null;
     }
-    res.render('auth/logInpage', {
+    res.render('./auth/logInpage', {
         pagetitle: 'Login',
         errorMessage: message,
         oldInput: {
@@ -103,7 +103,7 @@ exports.postLogIn = (req, res, next) => {
     const radioOptions = req.body.inlineRadioOptions;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(422).render('auth/logInpage', {
+        return res.status(422).render('./auth/logInpage', {
             pagetitle: 'Login',
             path: 'login',
             errorMessage: errors.array()[0].msg,
@@ -118,7 +118,7 @@ exports.postLogIn = (req, res, next) => {
         .then(user => {
             if (!user) {
                 // req.flash('error', 'Invalid email or password.');
-                return res.status(422).render('auth/logInpage', {
+                return res.status(422).render('./auth/logInpage', {
                     pagetitle: 'Login',
                     path: 'login',
                     errorMessage: 'Invalid email or password',
@@ -148,7 +148,7 @@ exports.postLogIn = (req, res, next) => {
                         });
                     }
                     // req.flash('error', 'Invalid email or password.');
-                    return res.status(422).render('auth/logInpage', {
+                    return res.status(422).render('./auth/logInpage', {
                         pagetitle: 'Login',
                         path: 'login',
                         errorMessage: 'Invalid email or password',
@@ -185,7 +185,7 @@ exports.getReset = (req, res, next) => {
     } else {
         message = null;
     }
-    res.render('auth/reset', {
+    res.render('./auth/reset', {
         pagetitle: 'Reset Password',
         errorMessage: message
     });
@@ -237,7 +237,7 @@ exports.getNewPassword = (req, res, next) => {
             } else {
                 message = null;
             }
-            res.render('auth/newPassword', {
+            res.render('./auth/newPassword', {
                 pagetitle: 'New Password',
                 errorMessage: message,
                 userId: user._id.toString(),
