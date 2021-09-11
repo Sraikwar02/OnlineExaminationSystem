@@ -1,5 +1,6 @@
 // select all elements
-const start = document.getElementById("start");
+const startSection = document.getElementById("startSection");
+const startBtn = document.getElementById("startBtn");
 const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
 const choiceA = document.getElementById("A");
@@ -10,15 +11,15 @@ const counter = document.getElementById("counter");
 const examSubmit = document.getElementById("examSubmit");
 const examId = document.querySelector('[name=examId]').value;
 
+
 let runningQuestion = 0;
 let score = 0;
 let Questions;
 
-console.log(quiz);
 
-const startExam = async (btn) => {
+startBtn.addEventListener("click",async (btn) => {
     console.log("running");
-    const examId = btn.parentNode.querySelector('[name=examId]').value;
+    // const examId = btn.parentNode.querySelector('[name=examId]').value;
     try {
         const questions = await fetch('/student/exam/questions/' + examId, {
             method: 'Get',
@@ -31,8 +32,8 @@ const startExam = async (btn) => {
                 return questions.questions;
             })
         Questions = questions;
-        start.style.display = "none";
-        await renderQuestion()
+        startSection.style.display = "none";
+        await renderQuestion();
         quiz.style.display = "block";
         // TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 
@@ -40,9 +41,8 @@ const startExam = async (btn) => {
     catch (err) {
         console.log(err);
     }
-
-
-};
+});
+ 
 
 function renderQuestion() {
     let q = Questions[runningQuestion];
@@ -53,7 +53,7 @@ function renderQuestion() {
     choiceD.innerHTML = q.option4;
 }
 
-function checkAnswer(ans) {
+choiceA.addEventListener("click",function checkAnswer(ans) {
     if (ans == Questions[runningQuestion].answer) {
         // answer is correct
         score++;
@@ -76,6 +76,103 @@ function checkAnswer(ans) {
         // scoreRender();
     }
 }
+)
+choiceB.addEventListener("click",function checkAnswer(ans) {
+    if (ans == Questions[runningQuestion].answer) {
+        // answer is correct
+        score++;
+        // change progress color to green
+        answerIsCorrect();
+    } else {
+        // answer is wrong
+        // change progress color to red
+        answerIsWrong();
+    }
+    let lastQuestion = Questions.length-1;
+    count = 0;
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        // end the quiz and show the score
+        // clearInterval(TIMER);
+        renderForm();
+        // scoreRender();
+    }
+}
+)
+choiceC.addEventListener("click",function checkAnswer(ans) {
+    if (ans == Questions[runningQuestion].answer) {
+        // answer is correct
+        score++;
+        // change progress color to green
+        answerIsCorrect();
+    } else {
+        // answer is wrong
+        // change progress color to red
+        answerIsWrong();
+    }
+    let lastQuestion = Questions.length-1;
+    count = 0;
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        // end the quiz and show the score
+        // clearInterval(TIMER);
+        renderForm();
+        // scoreRender();
+    }
+}
+)
+choiceD.addEventListener("click",function checkAnswer(ans) {
+    if (ans == Questions[runningQuestion].answer) {
+        // answer is correct
+        score++;
+        // change progress color to green
+        answerIsCorrect();
+    } else {
+        // answer is wrong
+        // change progress color to red
+        answerIsWrong();
+    }
+    let lastQuestion = Questions.length-1;
+    count = 0;
+    if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+    } else {
+        // end the quiz and show the score
+        // clearInterval(TIMER);
+        renderForm();
+        // scoreRender();
+    }
+}
+)
+
+// function checkAnswer(ans) {
+//     if (ans == Questions[runningQuestion].answer) {
+//         // answer is correct
+//         score++;
+//         // change progress color to green
+//         answerIsCorrect();
+//     } else {
+//         // answer is wrong
+//         // change progress color to red
+//         answerIsWrong();
+//     }
+//     let lastQuestion = Questions.length-1;
+//     count = 0;
+//     if (runningQuestion < lastQuestion) {
+//         runningQuestion++;
+//         renderQuestion();
+//     } else {
+//         // end the quiz and show the score
+//         // clearInterval(TIMER);
+//         renderForm();
+//         // scoreRender();
+//     }
+// }
 
 function answerIsCorrect() {
     // document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
